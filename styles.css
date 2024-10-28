@@ -1,0 +1,617 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #ffffff;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Burger menu styles */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: transparent;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+nav.shrink {
+    padding: 10px 30px;
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Rolling text style */
+.rolling-text {
+    display: inline-block;
+    font-family: 'Arial', serif;
+    font-size: 18px;
+    line-height: 36px;
+    height: 36px;
+    overflow: hidden;
+}
+
+.rolling-text:hover .letter {
+    transform: translateY(-100%);
+}
+
+.letter {
+    display: inline-block;
+    transition: transform var(--duration) var(--easing);
+}
+
+/* Delayed transition for each nav menu letter */
+:root {
+    --delay: 0.015s;
+    --duration: 0.6s;
+    --easing: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+}
+
+.hero-content p {
+    margin: 20px 0;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    background-color: #525252;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Section styles */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Project card styles */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-link {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Skills list */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* General styles for the burger menu */
+.burger {
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger .line {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Show the burger menu on small screens */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Hide navigation links */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* Below the navigation bar */
+        left: 0;
+        right: 0;
+        background-color: #333;
+        padding: 20px;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Show navigation links when active */
+    }
+
+    .burger {
+        display: flex;
+        /* Show burger icon on small screens */
+    }
+}
+
+/* Animation for the burger icon */
+.burger.toggle .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.toggle .line:nth-child(2) {
+    opacity: 0;
+    /* Hide the middle line */
+}
+
+.burger.toggle .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    /* Make background transparent */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
+    z-index: 100;
+    /* Ensure the nav is above other content */
+}
+
+/* When scrolled past the hero section */
+nav.scrolled {
+    color: white;
+    /* Change text color to white */
+}
+
+/* For navigation links */
+.nav-links a {
+    color: rgb(254, 254, 254);
+    /* Default color for links */
+    transition: color 0.3s ease;
+    /* Smooth transition for color change */
+}
+
+/* Change link color when scrolled */
+nav.scrolled .nav-links a {
+    color: white;
+    /* Change to white when scrolled */
+}
+
+/* Rest of your styles remain the same... */
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    /* Make background transparent */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
+    z-index: 100;
+    /* Ensure the nav is above other content */
+}
+
+/* When scrolled past the project section */
+nav.scrolled {
+    background-color: transparent;
+    /* Keep background transparent */
+    color: black;
+    /* Change text color to black */
+}
+
+/* For navigation links */
+.nav-links a {
+    color: black;
+    /* Default color for links */
+    transition: color 0.3s ease;
+    /* Smooth transition for color change */
+}
+
+/* Change link color when scrolled */
+nav.scrolled .nav-links a {
+    color: black;
+    /* Keep black when scrolled past the project section */
+}
+
+/* Optional: Change link color when not scrolled */
+nav:not(.scrolled) .nav-links a {
+    color: white;
+    /* Change to white when not scrolled */
+}
+
+/* Rest of your styles remain the same... */
+/* Default styles for the navigation menu */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: color 0.3s ease;
+    /* Smooth transition for color changes */
+}
+
+/* When scrolled */
+nav.scrolled {
+    color: white;
+    /* Change to white when scrolled */
+}
+
+/* Ensure there is no background color */
+nav.scrolled {
+    background-color: transparent;
+    /* Make background fully transparent */
+}
+
+/* Add this to ensure transparency */
+nav {
+    background-color: transparent;
+    /* Ensure it's transparent by default */
+}
+
+/* Adjust text color if needed based on initial state */
+nav {
+    color: black;
+    /* Initial color before scrolling */
+}
+
+/* Example for a smooth transition effect */
+nav a {
+    transition: color 0.3s ease;
+    /* Smooth transition for link color */
+}
+
+/* Default styles for the navigation menu */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent !important;
+    /* Force transparency */
+    color: black;
+    /* Initial color */
+    transition: color 0.3s ease;
+    /* Smooth transition for color changes */
+}
+
+/* When scrolled */
+nav.scrolled {
+    color: white;
+    /* Change to white when scrolled */
+    background-color: transparent !important;
+    /* Ensure it remains transparent on scroll */
+}
+
+/* Example for links */
+nav a {
+    transition: color 0.3s ease;
+    /* Smooth transition for link color */
+}
+
+/* Base styles for the navigation links */
+.link {
+    height: 30px;
+    align-items: center;
+    color: #000;
+    /* Default text color */
+    text-decoration: none;
+    display: flex;
+}
+
+/* Hide extra text */
+.mask {
+    position: relative;
+    padding: 0;
+    height: 20px;
+    overflow: hidden;
+    /* Hide overflow */
+}
+
+.link-container {
+    transition: transform 0.4s ease;
+}
+
+.title {
+    display: block;
+    font-size: 20px;
+    /* Set font-size and line height */
+    line-height: 20px;
+    transition: transform 0.4s ease;
+}
+
+.link-title1 {
+    transform-origin: right center;
+}
+
+.link-title2 {
+    transform-origin: left center;
+    transform: rotate(20deg);
+}
+
+.link-icon {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: #f8f8ff;
+    /* Background color of the icon */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    overflow: hidden;
+    /* Hide overflow */
+}
+
+.icon {
+    display: block;
+    position: absolute;
+    transition: transform 0.4s ease;
+}
+
+.icon:nth-child(2) {
+    transform: translate(-40px);
+}
+
+/* Hover Action */
+.link:hover .link-container {
+    transform: translateY(-20px);
+}
+
+.link:hover .link-title1 {
+    transform: rotate(20deg);
+}
+
+.link:hover .link-title2 {
+    transform: rotate(0);
+}
+
+.link:hover .icon:first-child {
+    transform: translate(40px);
+}
+
+.link:hover .icon:nth-child(2) {
+    transform: translate(0px);
+}
+
+/* Navigation background transparency */
+nav {
+    background: transparent;
+    /* No background color */
+    transition: background 0.4s ease;
+}
+
+/* Shrink navigation on scroll */
+nav.shrink {
+    background: rgba(255, 255, 255, 0.8);
+    /* Example background, change as needed */
+}
+
+#projects {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    /* Optional: Set a background color */
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Distribute space evenly */
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 300px;
+    /* Set a fixed width for the cards */
+    overflow: hidden;
+    /* Ensure content doesn't overflow the card */
+    transition: transform 0.2s ease;
+    /* Smooth transition effect */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* Scale up the card on hover */
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+}
+
+.project-info {
+    padding: 15px;
+}
+
+.project-info h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.project-info p {
+    margin: 5px 0 15px;
+    color: #666;
+    /* Gray color for description */
+}
+
+.project-link {
+    text-decoration: none;
+    color: #007BFF;
+    /* Blue color for the link */
+    font-weight: bold;
+}
+
+.project-image {
+    width: 100%;
+    /* Full width of the card */
+    height: 200px;
+    /* Set a fixed height for all images */
+    object-fit: cover;
+    /* Ensure the image covers the area without stretching */
+}
+
+/* Logo styles */
+.logo {
+    height: 40px;
+    /* Set height as needed */
+    transition: filter 0.3s ease;
+    /* Smooth transition */
+}
+
+/* Change logo color when scrolled */
+nav.scrolled .logo {
+    filter: brightness(0) invert(1);
+    /* Invert the logo color */
+}
+
+/* Other existing styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    /* Make background transparent */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
+    z-index: 100;
+    /* Ensure the nav is above other content */
+}
+
+/* When scrolled */
+nav.scrolled {
+    color: white;
+    /* Change text color to white */
+    background-color: transparent;
+    /* Ensure it remains transparent on scroll */
+}
+
+/* Default logo styles */
+.logo {
+    color: white;
+    /* Color when not scrolled */
+    transition: color 0.3s ease;
+    /* Smooth transition */
+}
+
+/* Logo color when scrolled */
+nav.scrolled #logo {
+    color: black;
+    /* Change to black when scrolled */
+}

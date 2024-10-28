@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "I Tråd Med Verden",
+    "description": "During our second semester, we undertook the project of creating a web feature for “I Tråd Med Verden,” a socio-economic business focused on offering employment opportunities to vulnerable individuals through textile design. Our main objective was to design a digital solution that would enhance customer engagement by highlighting the inspiring stories of the women involved in the initiative, ultimately driving more traffic to their website.",
+    "image_url": "images/project-one.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Project Two",
+    "description": "This is a brief description of Project Two.",
+    "github_url": "https://github.com/user/project-two",
+    "live_url": "https://project-two-demo.com",
+    "image_url": "images/project-two.jpg"
+  }
+]

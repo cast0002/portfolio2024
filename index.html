@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmen-Sophia's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">LOGO</div>
+            <div class="burger" id="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li>
+                    <a href="#about" class="link">
+                        <span class="mask">
+                            <div class="link-container">
+                                <span class="link-title1 title">About</span>
+                                <span class="link-title2 title">About</span>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#skills" class="link">
+                        <span class="mask">
+                            <div class="link-container">
+                                <span class="link-title1 title">Skills</span>
+                                <span class="link-title2 title">Skills</span>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="link">
+                        <span class="mask">
+                            <div class="link-container">
+                                <span class="link-title1 title">Contact</span>
+                                <span class="link-title2 title">Contact</span>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat tempora deleniti eveniet rem ratione,
+                placeat modi repudiandae id ea vero cum doloribus culpa?</p>
+            <a href="#projects" class="btn">See my work</a>
+        </div>
+    </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>bla bla bla bla</p>
+    </section>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-container">
+            <div class="card">
+                <img src="projectimg/itmv.png" alt="Project 1" class="project-image">
+                <div class="project-info">
+                    <h3>Web feature for I Tråd Med Verden</h3>
+                    <p>Brief description of the project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="projectimg/vildmad1.png" alt="Project 2" class="project-image">
+                <div class="project-info">
+                    <h3>App for Vild Mad</h3>
+                    <p>Brief description of the project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="path_to_your_image3.jpg" alt="Project 3" class="project-image">
+                <div class="project-info">
+                    <h3>Project Title 3</h3>
+                    <p>Brief description of the project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul class="skills-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>etc...</li>
+        </ul>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you would like to work together or just say hi, feel free to contact me.</p>
+        <a href="mailto:cast0002@stud.kea.dk" class="btn">Email Me</a>
+    </section>
+    <footer>
+        <p>&copy; 2024 Carmen-Sophia. All Rights Reserved.</p>
+    </footer>
+    <script>
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('nav-links');
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('toggle'); // Add this line
+        });
+
+        function wrapLetters() {
+            const rollingTexts = document.querySelectorAll('.rolling-text');
+            rollingTexts.forEach(link => {
+                const text = link.textContent;
+                link.innerHTML = '';
+                Array.from(text).forEach(letter => {
+                    const span = document.createElement('span');
+                    span.classList.add('letter');
+                    span.textContent = letter;
+                    link.appendChild(span);
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", wrapLetters);
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shrink');
+            } else {
+                nav.classList.remove('shrink');
+            }
+        });
+
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        function initializeSwiper() {
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+        // Adjust this value to control when the color change happens
+        const offset = 240; // Adjust as necessary for timing
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const projectSection = document.getElementById('projects'); // Ensure this matches your project's section ID
+
+            if (window.scrollY > projectSection.offsetTop - offset) {
+                nav.classList.add('scrolled'); // Add the class when past the adjusted position
+            } else {
+                nav.classList.remove('scrolled'); // Remove the class when above the adjusted position
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
