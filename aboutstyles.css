@@ -1,146 +1,149 @@
-/* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-header {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: #d9b99b;
     background-color: #1B2A1E;
-    color: #e7dec8;
-    position: relative;
-    z-index: 101;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* About Section Styling */
-#about-me {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: 0 auto;
+body.light-mode {
+    background-color: #d9b99b;
+    color: #1B2A1E;
+}
+
+h1,
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    color: inherit;
     text-align: center;
-    color: #e7dec8;
+}
+
+/* About Me Section */
+#about-me {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
 }
 
 .about-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 }
 
-.about-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: #f5e7dc;
-    margin-bottom: 20px;
+.text-container {
+    text-align: center;
 }
 
-.about-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    max-width: 700px;
-    margin: 20px 0;
-    color: #c3b9a8;
+.portrait {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling for Image Section */
-.image-section {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+/* Education Section */
+.education-section {
     margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(217, 185, 155, 0.1);
+    border: 1px solid currentColor;
+    border-radius: 10px;
 }
 
-.image-placeholder {
-    width: 220px;
-    height: 220px;
-    background-color: #d9b99b;
+.section-heading {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.education-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.education-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.diamond-icon {
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.education-details h3 {
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #1B2A1E;
-    border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: inherit;
 }
 
-.image-placeholder:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.education-details p {
+    font-size: 1rem;
+    color: inherit;
 }
 
-/* Light and Dark Mode Styling */
-body.light-mode {
-    background-color: #f5e7dc;
-    color: #1B2A1E;
+body.light-mode .squiggle-image {
+    filter: brightness(0.8) sepia(1) hue-rotate(20deg) saturate(2);
 }
 
-body.light-mode .about-title,
-body.light-mode .about-text {
-    color: #1B2A1E;
+body.dark-mode .squiggle-image {
+    filter: brightness(0.5) sepia(1) hue-rotate(200deg) saturate(2);
 }
-
-body.light-mode .image-placeholder {
-    background-color: #1B2A1E;
-    color: #f5e7dc;
-}
-
-body.dark-mode {
-    background-color: #1B2A1E;
-    color: #e7dec8;
-}
-
-body.dark-mode .image-placeholder {
-    background-color: #d9b99b;
-    color: #1B2A1E;
-}
-
-/* Theme Toggle */
-.theme-toggle {
-    display: flex;
-    align-items: center;
+.squiggle-container {
     position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Make it span the full viewport height */
+    overflow: hidden;
 }
 
-#theme-toggle-button {
-    display: none;
-}
-
-.toggle-label {
-    display: flex;
-    align-items: center;
-    background-color: #d9b99b;
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    justify-content: space-around;
-    position: relative;
-    transition: background-color 0.3s ease;
-}
-
-.toggle-ball {
+.squiggle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Ensures the full image is visible */
+    opacity: 0.8;
     position: absolute;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: #1B2A1E;
-    top: 3px;
-    left: 3px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: opacity 0.3s, transform 0.3s;
 }
 
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translateX(30px);
+body.light-mode .squiggle-image {
+    filter: brightness(0.8) sepia(1) hue-rotate(20deg) saturate(2);
+}
+
+body.dark-mode .squiggle-image {
+    filter: brightness(0.5) sepia(1) hue-rotate(200deg) saturate(2);
+}
+/* Section Spacing */
+.education-section {
+    margin-bottom: 20px;
+    /* Adjust spacing as needed */
+}
+
+.intro-paragraph {
+    margin-top: 20px;
+    /* Adjust spacing as needed */
+    line-height: 1.6;
+    /* Improves readability */
+}
+body.light-mode .toggle-label {
+    background-color: #1B2A1E;
+    /* Dark green background */
+}
+
+body.light-mode .toggle-ball {
     background-color: #d9b99b;
+    /* Light color for toggle ball */
+}
+
+body.light-mode .sun-icon,
+body.light-mode .moon-icon {
+    color: #d9b99b;
+    /* Light color for icons */
 }

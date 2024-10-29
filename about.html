@@ -4,62 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Carmen-Sophia Hemme</title>
+    <title>About - Carmen-Sophia Hemme</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="aboutstyles.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo">CS</div>
-        <div class="theme-toggle">
-            <input type="checkbox" id="theme-toggle-button">
-            <label for="theme-toggle-button" class="toggle-label">
-                <span class="toggle-ball"></span>
-                <span class="sun-icon">𖤓</span>
-                <span class="moon-icon">☾</span>
-            </label>
-        </div>
-    </header>
+    <!-- Placeholder for navigation menu -->
+    <div id="nav-placeholder"></div>
 
     <section id="about-me">
         <div class="about-container">
-            <h1 class="about-title">About Me</h1>
-            <p class="about-text">
-                Hi, I'm Carmen-Sophia Hemme, a passionate Multimedia Design student with a deep-rooted love for
-                creativity and innovation.
-                I specialize in front-end development, UI/UX design, and digital storytelling. My journey began with a
-                fascination
-                for blending aesthetics with functionality, and it has led me to create user-centered, sustainable
-                digital experiences.
-            </p>
-            <p class="about-text">
-                My goal is to craft designs that not only look good but also have a positive impact on users and the
-                environment.
-                When I’m not designing, you can find me exploring new design trends, honing my skills, or working on
-                personal projects.
-                Let’s create something amazing together!
-            </p>
-            <div class="image-section">
-                <!-- Placeholder for the first image -->
-                <div class="image-placeholder" id="image1">
-                    <p>Image 1</p>
-                </div>
-                <!-- Placeholder for the second image -->
-                <div class="image-placeholder" id="image2">
-                    <p>Image 2</p>
-                </div>
+            <div class="text-container">
+                <h1>About Me</h1>
+                <p>My name is Carmen-Sophia, and I am a Multimedia Design student at KEA (Copenhagen School of Design
+                    and Technology) from
+                    Denmark. With a specialization in UX and UI design, I am deeply passionate about creating digital
+                    solutions that are
+                    both aesthetically pleasing, sustainable, and highly functional.</p>
+            </div>
+            <div class="image-container">
+                <img src="portrait.png" alt="Portrait of Carmen-Sophia Hemme" class="portrait">
             </div>
         </div>
+
+        <section class="education-section">
+            <p>
+            <h2 class="section-heading">Education</h2>
+            <div class="education-content">
+                <div class="education-item">
+                    <span class="diamond-icon">♦</span>
+                    <div class="education-details">
+                        <h3>KEA, Copenhagen School of Technology & Design</h3>
+                        <p>PBA in Multimedia Design, 2023-present</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <span class="diamond-icon">♦</span>
+                    <div class="education-details">
+                        <h3>IADE Creative University, Lisbon</h3>
+                        <p>Study exchange in Global Design, 2024-2025</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <p>As a Multimedia Design student at KEA in Copenhagen, I have developed a comprehensive understanding of UX and
+            UI design
+            principles. My coursework has covered a wide range of topics, including web development, graphic design, and
+            digital
+            communication. I have gained hands-on experience with industry-standard tools such as Adobe Creative Suite,
+            Figma, and
+            various coding languages.</p>
     </section>
 
     <script>
-        // Theme toggle for dark/light mode
-        document.getElementById("theme-toggle-button").addEventListener("change", function () {
-            document.body.classList.toggle("light-mode", this.checked);
-            document.body.classList.toggle("dark-mode", !this.checked);
-        });
+        // Fetch and insert nav.html for navigation
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+                document.getElementById('theme-toggle-button').addEventListener('change', toggleTheme);
+            });
+
+        // Toggle theme based on switch state
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.toggle('dark-mode');
+        }
     </script>
 </body>
 

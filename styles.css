@@ -705,5 +705,154 @@ body.dark-mode .moon-icon {
     z-index: 0;
 }
 
-/* ABOUT PAGE */
+/* Update font for the About Me section */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
 
+.about-me-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+    font-family: 'Playfair Display', serif;
+    background-color: #FDF6EC;
+    color: #8B572A;
+}
+
+.about-me-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-me-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.about-me-text p {
+    font-size: 1.2em;
+    color: #8B572A;
+    margin-bottom: 1.5em;
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    max-width: 500px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 1.5em;
+}
+
+.about-me-portrait {
+    margin: 1.5em 0;
+}
+
+.about-me-portrait img {
+    max-width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.about-me-description {
+    font-size: 1.2em;
+    color: #8B572A;
+    max-width: 600px;
+    margin: 1em auto;
+    line-height: 1.6;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Ensure "About Me" heading is distinct */
+.about-me-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #8B572A;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+/* Make the rest of the text consistent */
+.about-me-section p {
+    font-family: 'Roboto', sans-serif;
+    /* Apply consistent font */
+    font-size: 1.2em;
+    color: #8B572A;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 1.5em;
+    line-height: 1.6;
+}
+/* Light Mode */
+body.light-mode .about-me-section {
+    background-color: #FDF6EC;
+    /* Light background */
+    color: #2E4B32;
+    /* Dark green text */
+}
+
+body.light-mode .about-me-section h2 {
+    color: #2E4B32;
+    /* Dark green text for heading */
+}
+
+/* Dark Mode */
+body.dark-mode .about-me-section {
+    background-color: #2E4B32;
+    /* Dark green background */
+    color: #FDF6EC;
+    /* Light text */
+}
+
+body.dark-mode .about-me-section h2 {
+    color: #FDF6EC;
+    /* Light text for heading */
+}
+/* Enlarge the portrait image */
+.about-me-portrait img {
+    max-width: 250px;
+    /* Increase this to make the image larger */
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Change text color to dark green in light mode */
+body.light-mode .about-me-section {
+    background-color: #FDF6EC;
+    /* Light background */
+    color: #2E4B32;
+    /* Dark green text */
+}
+
+body.light-mode .about-me-section h2,
+body.light-mode .about-me-section p {
+    color: #2E4B32;
+    /* Dark green text for all headings and paragraphs */
+}
+/* Light Mode */
+body.light-mode .about-me-section {
+    background-color: #FDF6EC !important;
+    /* Light background */
+    color: #2E4B32 !important;
+    /* Dark green text */
+}
+
+body.light-mode .about-me-section h2,
+body.light-mode .about-me-section p {
+    color: #2E4B32 !important;
+    /* Dark green text for heading and paragraphs */
+}
+
+/* Dark Mode */
+body.dark-mode .about-me-section {
+    background-color: #2E4B32 !important;
+    /* Dark green background */
+    color: #FDF6EC !important;
+    /* Light text */
+}
+
+body.dark-mode .about-me-section h2,
+body.dark-mode .about-me-section p {
+    color: #FDF6EC !important;
+    /* Light text for heading and paragraphs */
+}

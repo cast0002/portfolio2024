@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1B2A1E;
+            color: #e7dec8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode {
+            background-color: #f5e7dc;
+            color: #1B2A1E;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+            /* Prevents scrolling when menu is open */
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1B2A1E;
+            color: #e7dec8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            z-index: 101;
+        }
+
+        body.light-mode header {
+            background-color: #f5e7dc;
+            color: #1B2A1E;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #theme-toggle-button {
+            display: none;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            background-color: #d9b99b;
+            width: 60px;
+            height: 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            justify-content: space-around;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-ball {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background-color: #1B2A1E;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        #theme-toggle-button:checked+.toggle-label .toggle-ball {
+            transform: translate(30px, -50%);
+            background-color: #d9b99b;
+        }
+
+        .sun-icon,
+        .moon-icon {
+            font-size: 16px;
+            color: #d9b99b;
+            z-index: 0;
+        }
+
+        .sun-icon {
+            margin-right: auto;
+            padding-left: 5px;
+        }
+
+        .moon-icon {
+            margin-left: auto;
+            padding-right: 5px;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-bar {
+            width: 25px;
+            height: 3px;
+            background-color: #e7dec8;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .burger-bar {
+            background-color: #1B2A1E;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 13, 13, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .menu-overlay nav ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-overlay nav ul li {
+            margin: 20px 0;
+        }
+
+        .menu-overlay nav ul li a {
+            color: #e7dec8;
+            text-decoration: none;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu-overlay nav ul li a:hover {
+            color: #ffddb1;
+        }
+
+        body.light-mode .menu-overlay {
+            background-color: rgba(245, 231, 220, 0.9);
+        }
+
+        body.light-mode .menu-overlay nav ul li a {
+            color: #1B2A1E;
+        }
+
+        /* General logo color, to match the navigation text */
+        .logo {
+            color: #d9b99b;
+            /* Default color for dark mode */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Adjust logo color in light mode */
+        body.light-mode .logo {
+            color: #1B2A1E;
+            /* Dark green color for light mode */
+        }
+
+        /* Optional: if your nav links have a hover effect, you can add it here */
+        .logo:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">CSHS</a>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-toggle-button">
+            <label for="theme-toggle-button" class="toggle-label">
+                <span class="toggle-ball"></span>
+                <span class="sun-icon">𖤓</span>
+                <span class="moon-icon">☾</span>
+            </label>
+        </div>
+        <div class="burger-menu" id="burger-menu">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <nav>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        // Theme toggle for dark/light mode
+        document.getElementById("theme-toggle-button").addEventListener("change", function () {
+            document.body.classList.toggle("light-mode", this.checked);
+            document.body.classList.toggle("dark-mode", !this.checked);
+        });
+
+        // Burger menu toggle
+        const burgerMenu = document.getElementById("burger-menu");
+        const menuOverlay = document.getElementById("menu-overlay");
+
+        burgerMenu.addEventListener("click", function () {
+            menuOverlay.classList.toggle("open");
+            burgerMenu.classList.toggle("active");
+            document.body.classList.toggle("menu-open"); // Prevents scrolling when menu is open
+        });
+
+        // Close the menu overlay when a link is clicked
+        document.querySelectorAll(".menu-overlay nav ul li a").forEach(link => {
+            link.addEventListener("click", () => {
+                menuOverlay.classList.remove("open");
+                burgerMenu.classList.remove("active");
+                document.body.classList.remove("menu-open");
+            });
+        });
+    </script>
+</body>
+
+</html>
