@@ -1,0 +1,146 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1B2A1E;
+    color: #e7dec8;
+    position: relative;
+    z-index: 101;
+}
+
+/* About Section Styling */
+#about-me {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    color: #e7dec8;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #f5e7dc;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 20px 0;
+    color: #c3b9a8;
+}
+
+/* Styling for Image Section */
+.image-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.image-placeholder {
+    width: 220px;
+    height: 220px;
+    background-color: #d9b99b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1B2A1E;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-placeholder:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Light and Dark Mode Styling */
+body.light-mode {
+    background-color: #f5e7dc;
+    color: #1B2A1E;
+}
+
+body.light-mode .about-title,
+body.light-mode .about-text {
+    color: #1B2A1E;
+}
+
+body.light-mode .image-placeholder {
+    background-color: #1B2A1E;
+    color: #f5e7dc;
+}
+
+body.dark-mode {
+    background-color: #1B2A1E;
+    color: #e7dec8;
+}
+
+body.dark-mode .image-placeholder {
+    background-color: #d9b99b;
+    color: #1B2A1E;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#theme-toggle-button {
+    display: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    background-color: #d9b99b;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: space-around;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-ball {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #1B2A1E;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translateX(30px);
+    background-color: #d9b99b;
+}

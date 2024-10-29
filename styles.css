@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,611 +7,703 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #ffffff;
+    background-color: #1B2A1E;
+    color: #e7dec8;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.menu-open {
+    overflow: hidden;
+    /* Prevents scrolling when menu is open */
+}
+
+/* Header Styles */
 header {
-    background-color: #333;
-    color: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1B2A1E;
+    color: #e7dec8;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Burger menu styles */
-.burger {
+body.light-mode header {
+    background-color: #f5e7dc;
+    color: #1B2A1E;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#theme-toggle-button {
     display: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: space-around;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #d9b99b;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translateX(30px);
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: flex;
     flex-direction: column;
     cursor: pointer;
 }
 
-.burger div {
+.burger-bar {
     width: 25px;
     height: 3px;
-    background-color: white;
-    margin: 4px;
+    background-color: #e7dec8;
+    margin: 4px 0;
     transition: all 0.3s ease;
 }
 
-/* Navigation styles */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: transparent;
-    color: white;
+body.light-mode .burger-bar {
+    background-color: #1B2A1E;
+}
+
+.burger-menu.active .burger-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active .burger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    display: none;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    transition: all 0.3s ease;
-    z-index: 100;
-}
-
-nav.shrink {
-    padding: 10px 30px;
-    background-color: rgba(51, 51, 51, 0.9);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    margin-left: auto;
-}
-
-.nav-links li {
-    margin: 0 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-}
-
-/* Rolling text style */
-.rolling-text {
-    display: inline-block;
-    font-family: 'Arial', serif;
-    font-size: 18px;
-    line-height: 36px;
-    height: 36px;
-    overflow: hidden;
-}
-
-.rolling-text:hover .letter {
-    transform: translateY(-100%);
-}
-
-.letter {
-    display: inline-block;
-    transition: transform var(--duration) var(--easing);
-}
-
-/* Delayed transition for each nav menu letter */
-:root {
-    --delay: 0.015s;
-    --duration: 0.6s;
-    --easing: cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-#hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    height: 100%;
+    background-color: rgba(13, 13, 13, 0.9);
     justify-content: center;
-    background-color: #000;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.menu-overlay nav ul {
+    list-style: none;
     text-align: center;
-    color: #fff;
-    padding: 0 20px;
 }
 
-.hero-content {
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: 48px;
-}
-
-.hero-content p {
+.menu-overlay nav ul li {
     margin: 20px 0;
 }
 
-/* Button styles */
+.menu-overlay nav ul li a {
+    color: #e7dec8;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.menu-overlay nav ul li a:hover {
+    color: #ffddb1;
+}
+
+body.light-mode .menu-overlay {
+    background-color: rgba(245, 231, 220, 0.9);
+}
+
+body.light-mode .menu-overlay nav ul li a {
+    color: #1B2A1E;
+}
+
+body.light-mode .menu-overlay nav ul li a:hover {
+    color: #1B2A1E;
+}
+
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 100px 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.subheading {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Button */
 .btn {
     display: inline-block;
-    background-color: #525252;
-    color: #fff;
     padding: 10px 20px;
+    border: 1px solid #e7dec8;
+    border-radius: 20px;
+    color: inherit;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
     margin-top: 15px;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #e7dec8;
+    color: #1B2A1E;
 }
 
-/* Section styles */
-section {
-    padding: 60px 20px;
-    text-align: center;
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1B2A1E;
+    color: #e7dec8;
 }
 
-h2 {
-    margin-bottom: 20px;
+body.dark-mode .btn {
+    border-color: #e7dec8;
+    color: #e7dec8;
 }
 
-/* Project card styles */
-.swiper-container {
-    width: 100%;
-    height: 100%;
+body.dark-mode .btn:hover {
+    background-color: #ffddb1;
+    color: #0d0d0d;
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Light Mode */
+body.light-mode {
+    background-color: #f5e7dc;
+    color: #1B2A1E;
 }
 
-.card img {
-    width: 100%;
+body.light-mode .btn {
+    border-color: #1B2A1E;
+    color: #1B2A1E;
 }
 
-.project-info {
-    padding: 20px;
+body.light-mode .btn:hover {
+    background-color: #1B2A1E;
+    color: #ffffff;
 }
 
-.project-link {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-/* Skills list */
-.skills-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Footer styles */
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #1B2A1E;
+    color: #e7dec8;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Ensure header stays above the overlay */
+header {
+    z-index: 101;
+    position: relative;
 }
 
-/* General styles for the burger menu */
-.burger {
+/* Menu Overlay */
+.menu-overlay {
     display: none;
-    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1B2A1E;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.open {
+    display: flex;
+}
+
+/* Menu Icon Container */
+.menu-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sun/Moon Shape */
+.sun-moon-shape {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #F9A826;
+    /* Light mode sun color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: -1;
+}
+
+/* Light Mode Sun Shape */
+body.light-mode .sun-moon-shape {
+    background-color: #F9A826;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%,
+            79% 91%, 50% 70%, 21% 91%, 32% 57%,
+            2% 35%, 39% 35%);
+}
+
+/* Dark Mode Moon Shape */
+body.dark-mode .sun-moon-shape {
+    background-color: #e7dec8;
+    clip-path: circle(50% at 30% 30%);
+}
+
+/* Burger Menu */
+.burger-menu {
+    position: relative;
+    z-index: 1;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
 }
 
-.burger .line {
-    width: 30px;
+.burger-bar {
+    width: 25px;
     height: 3px;
-    background-color: #fff;
-    margin: 4px;
+    background-color: #e7dec8;
+    margin: 4px 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode .burger-bar {
+    background-color: #1B2A1E;
+}
+
+body.dark-mode .burger-bar {
+    background-color: #e7dec8;
+}
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#theme-toggle-button {
+    display: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    /* background for the toggle switch */
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 5px;
+    overflow: hidden;
+    /* Prevents emojis from overflowing */
+}
+
+.toggle-ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #d9b99b;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    z-index: 1;
+    /* Places the ball above the emojis */
+}
+
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translateX(30px);
+}
+
+.sun-moon-icon {
+    font-size: 16px;
+    color: #d9b99b;
+    letter-spacing: 6px;
+    z-index: 0;
+    /* Keeps emojis behind the toggle-ball */
+    width: 100%;
+    /* Ensures alignment inside the label */
+    text-align: center;
+    /* Centers the emojis horizontally */
+}
+/* Base Toggle Styles */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#theme-toggle-button {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #d9b99b;
+    /* Light mode background color */
+    border: 2px solid #1B2A1E;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.toggle-ball {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #1B2A1E;
+    /* Default color for dark mode */
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    font-size: 1.2rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.sun-icon {
+    left: 8px;
+    color: #1B2A1E;
+    /* Dark color for light mode */
+}
+
+.moon-icon {
+    right: 8px;
+    color: #d9b99b;
+    /* Light color for dark mode */
+}
+
+#theme-toggle-button:checked+.toggle-label {
+    background-color: #1B2A1E;
+    /* Dark mode background color */
+    border-color: #d9b99b;
+}
+
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translateX(30px);
+    background-color: #d9b99b;
+    /* Light color for light mode */
+}
+
+#theme-toggle-button:checked+.toggle-label .sun-icon .moon-icon{
+    color: #d9b99b;
+    /* Light color in dark mode */
+}
+
+#theme-toggle-button:not(:checked)+.toggle-label .moon-icon {
+    color: #1B2A1E;
+    /* Dark color in light mode */
+}
+/* Header Styles */
+header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1B2A1E;
+    color: #e7dec8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    z-index: 101;
+}
+
+/* Positioning the items in header */
+header .logo {
+    flex: 1;
+    /* Aligns logo to the left */
+}
+
+.theme-toggle-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    /* Centers the toggle in the middle */
+}
+
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    flex: 1;
+    /* Aligns burger to the right */
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* Burger Menu Bars */
+.burger-bar {
+    width: 25px;
+    height: 3px;
+    background-color: #e7dec8;
+    margin: 4px 0;
     transition: all 0.3s ease;
 }
 
-/* Show the burger menu on small screens */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        /* Hide navigation links */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        /* Below the navigation bar */
-        left: 0;
-        right: 0;
-        background-color: #333;
-        padding: 20px;
-        z-index: 99;
-    }
-
-    .nav-links.active {
-        display: flex;
-        /* Show navigation links when active */
-    }
-
-    .burger {
-        display: flex;
-        /* Show burger icon on small screens */
-    }
+body.light-mode .burger-bar {
+    background-color: #1B2A1E;
 }
 
-/* Animation for the burger icon */
-.burger.toggle .line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.burger.toggle .line:nth-child(2) {
-    opacity: 0;
-    /* Hide the middle line */
-}
-
-.burger.toggle .line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Navigation styles */
-nav {
+/* Theme Toggle */
+.theme-toggle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    /* Make background transparent */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    /* Smooth transition */
-    z-index: 100;
-    /* Ensure the nav is above other content */
+    position: relative;
 }
 
-/* When scrolled past the hero section */
-nav.scrolled {
-    color: white;
-    /* Change text color to white */
+#theme-toggle-button {
+    display: none;
 }
 
-/* For navigation links */
-.nav-links a {
-    color: rgb(254, 254, 254);
-    /* Default color for links */
-    transition: color 0.3s ease;
-    /* Smooth transition for color change */
-}
-
-/* Change link color when scrolled */
-nav.scrolled .nav-links a {
-    color: white;
-    /* Change to white when scrolled */
-}
-
-/* Rest of your styles remain the same... */
-/* Navigation styles */
-nav {
+.toggle-label {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    /* Make background transparent */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    /* Smooth transition */
-    z-index: 100;
-    /* Ensure the nav is above other content */
-}
-
-/* When scrolled past the project section */
-nav.scrolled {
-    background-color: transparent;
-    /* Keep background transparent */
-    color: black;
-    /* Change text color to black */
-}
-
-/* For navigation links */
-.nav-links a {
-    color: black;
-    /* Default color for links */
-    transition: color 0.3s ease;
-    /* Smooth transition for color change */
-}
-
-/* Change link color when scrolled */
-nav.scrolled .nav-links a {
-    color: black;
-    /* Keep black when scrolled past the project section */
-}
-
-/* Optional: Change link color when not scrolled */
-nav:not(.scrolled) .nav-links a {
-    color: white;
-    /* Change to white when not scrolled */
-}
-
-/* Rest of your styles remain the same... */
-/* Default styles for the navigation menu */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: color 0.3s ease;
-    /* Smooth transition for color changes */
-}
-
-/* When scrolled */
-nav.scrolled {
-    color: white;
-    /* Change to white when scrolled */
-}
-
-/* Ensure there is no background color */
-nav.scrolled {
-    background-color: transparent;
-    /* Make background fully transparent */
-}
-
-/* Add this to ensure transparency */
-nav {
-    background-color: transparent;
-    /* Ensure it's transparent by default */
-}
-
-/* Adjust text color if needed based on initial state */
-nav {
-    color: black;
-    /* Initial color before scrolling */
-}
-
-/* Example for a smooth transition effect */
-nav a {
-    transition: color 0.3s ease;
-    /* Smooth transition for link color */
-}
-
-/* Default styles for the navigation menu */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: transparent !important;
-    /* Force transparency */
-    color: black;
-    /* Initial color */
-    transition: color 0.3s ease;
-    /* Smooth transition for color changes */
-}
-
-/* When scrolled */
-nav.scrolled {
-    color: white;
-    /* Change to white when scrolled */
-    background-color: transparent !important;
-    /* Ensure it remains transparent on scroll */
-}
-
-/* Example for links */
-nav a {
-    transition: color 0.3s ease;
-    /* Smooth transition for link color */
-}
-
-/* Base styles for the navigation links */
-.link {
+    background-color: #d9b99b;
+    width: 60px;
     height: 30px;
-    align-items: center;
-    color: #000;
-    /* Default text color */
-    text-decoration: none;
-    display: flex;
-}
-
-/* Hide extra text */
-.mask {
-    position: relative;
-    padding: 0;
-    height: 20px;
-    overflow: hidden;
-    /* Hide overflow */
-}
-
-.link-container {
-    transition: transform 0.4s ease;
-}
-
-.title {
-    display: block;
-    font-size: 20px;
-    /* Set font-size and line height */
-    line-height: 20px;
-    transition: transform 0.4s ease;
-}
-
-.link-title1 {
-    transform-origin: right center;
-}
-
-.link-title2 {
-    transform-origin: left center;
-    transform: rotate(20deg);
-}
-
-.link-icon {
-    position: relative;
-    width: 35px;
-    height: 35px;
-    background: #f8f8ff;
-    /* Background color of the icon */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    overflow: hidden;
-    /* Hide overflow */
-}
-
-.icon {
-    display: block;
-    position: absolute;
-    transition: transform 0.4s ease;
-}
-
-.icon:nth-child(2) {
-    transform: translate(-40px);
-}
-
-/* Hover Action */
-.link:hover .link-container {
-    transform: translateY(-20px);
-}
-
-.link:hover .link-title1 {
-    transform: rotate(20deg);
-}
-
-.link:hover .link-title2 {
-    transform: rotate(0);
-}
-
-.link:hover .icon:first-child {
-    transform: translate(40px);
-}
-
-.link:hover .icon:nth-child(2) {
-    transform: translate(0px);
-}
-
-/* Navigation background transparency */
-nav {
-    background: transparent;
-    /* No background color */
-    transition: background 0.4s ease;
-}
-
-/* Shrink navigation on scroll */
-nav.shrink {
-    background: rgba(255, 255, 255, 0.8);
-    /* Example background, change as needed */
-}
-
-#projects {
-    padding: 50px 20px;
-    background-color: #f4f4f4;
-    /* Optional: Set a background color */
-}
-
-.project-container {
-    display: flex;
-    flex-wrap: wrap;
+    border-radius: 30px;
+    cursor: pointer;
     justify-content: space-around;
-    /* Distribute space evenly */
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-    width: 300px;
-    /* Set a fixed width for the cards */
-    overflow: hidden;
-    /* Ensure content doesn't overflow the card */
-    transition: transform 0.2s ease;
-    /* Smooth transition effect */
+/* Ball inside the toggle */
+.toggle-ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #1B2A1E;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    /* Scale up the card on hover */
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translateX(30px);
 }
 
-.project-image {
-    width: 100%;
-    height: auto;
+/* Sun and Moon Icons */
+.sun-icon,
+.moon-icon {
+    font-size: 16px;
+    color: #d9b99b;
+    z-index: 0;
 }
 
-.project-info {
-    padding: 15px;
+.sun-icon {
+    margin-right: auto;
+    padding-left: 5px;
 }
 
-.project-info h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
+.moon-icon {
+    margin-left: auto;
+    padding-right: 5px;
 }
 
-.project-info p {
-    margin: 5px 0 15px;
-    color: #666;
-    /* Gray color for description */
+/* Light and Dark Mode adjustments */
+body.light-mode header {
+    background-color: #f5e7dc;
+    color: #1B2A1E;
 }
 
-.project-link {
-    text-decoration: none;
-    color: #007BFF;
-    /* Blue color for the link */
-    font-weight: bold;
+body.dark-mode header {
+    background-color: #1B2A1E;
+    color: #e7dec8;
 }
-
-.project-image {
-    width: 100%;
-    /* Full width of the card */
-    height: 200px;
-    /* Set a fixed height for all images */
-    object-fit: cover;
-    /* Ensure the image covers the area without stretching */
-}
-
-/* Logo styles */
-.logo {
-    height: 40px;
-    /* Set height as needed */
-    transition: filter 0.3s ease;
-    /* Smooth transition */
-}
-
-/* Change logo color when scrolled */
-nav.scrolled .logo {
-    filter: brightness(0) invert(1);
-    /* Invert the logo color */
-}
-
-/* Other existing styles */
-nav {
+/* Header Styles */
+header {
+    padding: 20px 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    /* Make background transparent */
+    background-color: #1B2A1E;
+    color: #e7dec8;
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* Smooth transition */
-    z-index: 100;
-    /* Ensure the nav is above other content */
+    position: relative;
+    z-index: 101;
 }
 
-/* When scrolled */
-nav.scrolled {
-    color: white;
-    /* Change text color to white */
-    background-color: transparent;
-    /* Ensure it remains transparent on scroll */
+/* Centering the theme toggle */
+.theme-toggle-container {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centering the toggle */
 }
 
-/* Default logo styles */
-.logo {
-    color: white;
-    /* Color when not scrolled */
-    transition: color 0.3s ease;
-    /* Smooth transition */
+/* Burger Menu */
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto; /* Aligns the burger menu to the right */
 }
 
-/* Logo color when scrolled */
-nav.scrolled #logo {
-    color: black;
-    /* Change to black when scrolled */
+/* Toggle Label */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    background-color: #d9b99b;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: space-between; /* Space for sun and moon icons */
+    position: relative;
+    transition: background-color 0.3s ease;
 }
+
+/* Toggle Ball */
+.toggle-ball {
+    position: absolute;
+    top: 3px; /* Center the ball vertically */
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #1B2A1E; /* Color for dark mode */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Toggle Button Colors */
+body.light-mode .toggle-label {
+    background-color: #1B2A1E; /* Dark mode background color */
+}
+
+body.light-mode .toggle-ball {
+    background-color: #d9b99b; /* Color for light mode */
+}
+
+#theme-toggle-button:checked + .toggle-label .toggle-ball {
+    transform: translateX(30px); /* Toggle movement */
+}
+
+body.light-mode .sun-icon {
+    color: #d9b99b; /* Light color for sun icon */
+}
+
+body.dark-mode .moon-icon {
+    color: #F9A826; /* Yellow color for moon icon in dark mode */
+}
+
+/* Additional styles may be added as needed */
+/* Toggle Label */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    background-color: #d9b99b;
+    /* Light mode background color */
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    justify-content: space-between;
+    /* Space for sun and moon icons */
+    position: relative;
+    transition: background-color 0.3s ease;
+    padding: 0 5px;
+    /* Adjust padding for balance */
+}
+
+/* Toggle Ball */
+.toggle-ball {
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 3px;
+    /* Adjust left for ball position */
+    transform: translateY(-50%);
+    /* Center the ball vertically */
+    width: 24px;
+    height: 24px;
+    background-color: #1B2A1E;
+    /* Color for dark mode */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Adjust for checked state */
+#theme-toggle-button:checked+.toggle-label .toggle-ball {
+    transform: translate(30px, -50%);
+    /* Move ball and keep it centered */
+}
+
+/* Sun and Moon Icons */
+.sun-icon,
+.moon-icon {
+    font-size: 16px;
+    color: #d9b99b;
+    z-index: 0;
+}
+
+/* ABOUT PAGE */
+

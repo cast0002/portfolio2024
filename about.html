@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Carmen-Sophia Hemme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">CS</div>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-toggle-button">
+            <label for="theme-toggle-button" class="toggle-label">
+                <span class="toggle-ball"></span>
+                <span class="sun-icon">𖤓</span>
+                <span class="moon-icon">☾</span>
+            </label>
+        </div>
+    </header>
+
+    <section id="about-me">
+        <div class="about-container">
+            <h1 class="about-title">About Me</h1>
+            <p class="about-text">
+                Hi, I'm Carmen-Sophia Hemme, a passionate Multimedia Design student with a deep-rooted love for
+                creativity and innovation.
+                I specialize in front-end development, UI/UX design, and digital storytelling. My journey began with a
+                fascination
+                for blending aesthetics with functionality, and it has led me to create user-centered, sustainable
+                digital experiences.
+            </p>
+            <p class="about-text">
+                My goal is to craft designs that not only look good but also have a positive impact on users and the
+                environment.
+                When I’m not designing, you can find me exploring new design trends, honing my skills, or working on
+                personal projects.
+                Let’s create something amazing together!
+            </p>
+            <div class="image-section">
+                <!-- Placeholder for the first image -->
+                <div class="image-placeholder" id="image1">
+                    <p>Image 1</p>
+                </div>
+                <!-- Placeholder for the second image -->
+                <div class="image-placeholder" id="image2">
+                    <p>Image 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme toggle for dark/light mode
+        document.getElementById("theme-toggle-button").addEventListener("change", function () {
+            document.body.classList.toggle("light-mode", this.checked);
+            document.body.classList.toggle("dark-mode", !this.checked);
+        });
+    </script>
+</body>
+
+</html>
