@@ -1,3 +1,6 @@
+/* Importing fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
+
 /* Base Styles */
 * {
     margin: 0;
@@ -17,15 +20,10 @@ body.menu-open {
     /* Prevents scrolling when menu is open */
 }
 
-/* Header Styles */
-header {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1B2A1E;
-    color: #e7dec8;
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #f5e7dc;
+    color: #1B2A1E;
 }
 
 body.light-mode header {
@@ -33,12 +31,78 @@ body.light-mode header {
     color: #1B2A1E;
 }
 
+body.light-mode .menu-overlay {
+    background-color: rgba(245, 231, 220, 0.9);
+}
+
+body.light-mode .menu-overlay nav ul li a,
+body.light-mode .burger-bar {
+    color: #1B2A1E;
+}
+
+body.light-mode .toggle-label {
+    background-color: #1B2A1E;
+}
+
+body.light-mode .toggle-ball {
+    background-color: #e7dec8;
+}
+
+body.light-mode .sun-icon,
+body.light-mode .moon-icon {
+    color: #e7dec8;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1B2A1E;
+    color: #e7dec8;
+}
+
+body.dark-mode header {
+    background-color: #1B2A1E;
+    color: #e7dec8;
+}
+
+body.dark-mode .menu-overlay {
+    background-color: rgba(13, 13, 13, 0.9);
+}
+body.dark-mode .sun-icon,
+body.dark-mode .moon-icon {
+    color: #1B2A1E;
+}
+/* Typography */
+h1,
+h2,
+h3,
 .logo {
     font-family: 'Playfair Display', serif;
+}
+
+.hero-description,
+p,
+.about-me-section p {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 101;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logo {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
+/* Theme Toggle */
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -52,7 +116,7 @@ body.light-mode header {
 .toggle-label {
     display: flex;
     align-items: center;
-    background-color: #444;
+    background-color: #e7dec8;
     width: 60px;
     height: 30px;
     border-radius: 30px;
@@ -68,7 +132,7 @@ body.light-mode header {
     left: 3px;
     width: 24px;
     height: 24px;
-    background-color: #d9b99b;
+    background-color: #1B2A1E;
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
@@ -92,10 +156,6 @@ body.light-mode header {
     transition: all 0.3s ease;
 }
 
-body.light-mode .burger-bar {
-    background-color: #1B2A1E;
-}
-
 .burger-menu.active .burger-bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -116,7 +176,6 @@ body.light-mode .burger-bar {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(13, 13, 13, 0.9);
     justify-content: center;
     align-items: center;
     z-index: 100;
@@ -146,44 +205,7 @@ body.light-mode .burger-bar {
 }
 
 .menu-overlay nav ul li a:hover {
-    color: #ffddb1;
-}
-
-body.light-mode .menu-overlay {
-    background-color: rgba(245, 231, 220, 0.9);
-}
-
-body.light-mode .menu-overlay nav ul li a {
-    color: #1B2A1E;
-}
-
-body.light-mode .menu-overlay nav ul li a:hover {
-    color: #1B2A1E;
-}
-
-/* Hero Section */
-#hero {
-    text-align: center;
-    padding: 100px 20px;
-    font-family: 'Playfair Display', serif;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: 700;
-}
-
-.subheading {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    font-style: italic;
-}
-
-.hero-description {
-    max-width: 600px;
-    margin: 20px auto;
-    font-size: 1rem;
-    line-height: 1.6;
+    color: #e7dec8;
 }
 
 /* Button */
@@ -205,36 +227,46 @@ body.light-mode .menu-overlay nav ul li a:hover {
     color: #1B2A1E;
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: #1B2A1E;
-    color: #e7dec8;
+/* Hero Section */
+#hero {
+    text-align: center;
+    padding: 100px 20px;
 }
 
-body.dark-mode .btn {
-    border-color: #e7dec8;
-    color: #e7dec8;
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
 }
 
-body.dark-mode .btn:hover {
-    background-color: #ffddb1;
-    color: #0d0d0d;
+/* About Me Section */
+.about-me-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
 }
 
-/* Light Mode */
-body.light-mode {
-    background-color: #f5e7dc;
-    color: #1B2A1E;
+.about-me-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-body.light-mode .btn {
-    border-color: #1B2A1E;
-    color: #1B2A1E;
+.about-me-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
 }
 
-body.light-mode .btn:hover {
-    background-color: #1B2A1E;
-    color: #ffffff;
+.about-me-text p,
+.hero-description,
+.subheading {
+    font-size: 1.2em;
+}
+
+.about-me-portrait img {
+    max-width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */
@@ -246,467 +278,77 @@ footer {
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-/* Ensure header stays above the overlay */
-header {
-    z-index: 101;
-    position: relative;
-}
 
-/* Menu Overlay */
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1B2A1E;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    transition: opacity 0.3s ease;
-}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
 
-.menu-overlay.open {
-    display: flex;
+    .menu-overlay nav ul li a {
+        font-size: 1.5rem;
+    }
 }
-
-/* Menu Icon Container */
-.menu-icon-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Sun/Moon Shape */
-.sun-moon-shape {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #F9A826;
-    /* Light mode sun color */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    z-index: -1;
-}
-
-/* Light Mode Sun Shape */
-body.light-mode .sun-moon-shape {
-    background-color: #F9A826;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%,
-            79% 91%, 50% 70%, 21% 91%, 32% 57%,
-            2% 35%, 39% 35%);
-}
-
-/* Dark Mode Moon Shape */
-body.dark-mode .sun-moon-shape {
-    background-color: #e7dec8;
-    clip-path: circle(50% at 30% 30%);
-}
-
-/* Burger Menu */
-.burger-menu {
-    position: relative;
-    z-index: 1;
+/* About Me Section */
+.about-me-section {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
-}
-
-.burger-bar {
-    width: 25px;
-    height: 3px;
-    background-color: #e7dec8;
-    margin: 4px 0;
-    transition: background-color 0.3s ease;
-}
-
-body.light-mode .burger-bar {
-    background-color: #1B2A1E;
-}
-
-body.dark-mode .burger-bar {
-    background-color: #e7dec8;
-}
-.theme-toggle {
-    display: flex;
     align-items: center;
-    position: relative;
-}
-
-#theme-toggle-button {
-    display: none;
-}
-
-.toggle-label {
-    display: flex;
-    align-items: center;
-    background-color: #444;
-    /* background for the toggle switch */
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    justify-content: space-between;
-    position: relative;
-    padding: 0 5px;
-    overflow: hidden;
-    /* Prevents emojis from overflowing */
-}
-
-.toggle-ball {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background-color: #d9b99b;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    z-index: 1;
-    /* Places the ball above the emojis */
-}
-
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translateX(30px);
-}
-
-.sun-moon-icon {
-    font-size: 16px;
-    color: #d9b99b;
-    letter-spacing: 6px;
-    z-index: 0;
-    /* Keeps emojis behind the toggle-ball */
-    width: 100%;
-    /* Ensures alignment inside the label */
     text-align: center;
-    /* Centers the emojis horizontally */
-}
-/* Base Toggle Styles */
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-#theme-toggle-button {
-    display: none;
+    padding: 2em;
+    width: 100%;
+    min-height: 100vh;
+    /* Ensures it fills the entire screen height */
+    background-color: #FDF6EC;
+    /* Light background for light mode */
+    color: #2E4B32;
+    /* Dark green text color for light mode */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.toggle-label {
-    position: relative;
-    width: 60px;
-    height: 30px;
-    background-color: #d9b99b;
-    /* Light mode background color */
-    border: 2px solid #1B2A1E;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+/* Dark Mode - About Me Section */
+body.dark-mode .about-me-section {
+    background-color: #2E4B32;
+    /* Dark green background for dark mode */
+    color: #FDF6EC;
+    /* Light text color for dark mode */
 }
 
-.toggle-ball {
-    position: absolute;
-    width: 24px;
-    height: 24px;
+.about-me-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: inherit;
+    /* Inherits color based on mode */
+}
+
+.about-me-text p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: inherit;
+    /* Inherits color based on mode */
+}
+
+.about-me-portrait img {
+    max-width: 150px;
     border-radius: 50%;
-    background-color: #1B2A1E;
-    /* Default color for dark mode */
-    top: 3px;
-    left: 3px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1.5em 0;
 }
-
-.sun-icon,
-.moon-icon {
-    position: absolute;
-    font-size: 1.2rem;
-    pointer-events: none;
-    transition: color 0.3s ease;
-}
-
-.sun-icon {
-    left: 8px;
-    color: #1B2A1E;
-    /* Dark color for light mode */
-}
-
-.moon-icon {
-    right: 8px;
-    color: #d9b99b;
-    /* Light color for dark mode */
-}
-
-#theme-toggle-button:checked+.toggle-label {
-    background-color: #1B2A1E;
-    /* Dark mode background color */
-    border-color: #d9b99b;
-}
-
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translateX(30px);
-    background-color: #d9b99b;
-    /* Light color for light mode */
-}
-
-#theme-toggle-button:checked+.toggle-label .sun-icon .moon-icon{
-    color: #d9b99b;
-    /* Light color in dark mode */
-}
-
-#theme-toggle-button:not(:checked)+.toggle-label .moon-icon {
-    color: #1B2A1E;
-    /* Dark color in light mode */
-}
-/* Header Styles */
-header {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1B2A1E;
-    color: #e7dec8;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: relative;
-    z-index: 101;
-}
-
-/* Positioning the items in header */
-header .logo {
-    flex: 1;
-    /* Aligns logo to the left */
-}
-
-.theme-toggle-container {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    /* Centers the toggle in the middle */
-}
-
-.burger-menu {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    flex: 1;
-    /* Aligns burger to the right */
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-/* Burger Menu Bars */
-.burger-bar {
-    width: 25px;
-    height: 3px;
-    background-color: #e7dec8;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-}
-
-body.light-mode .burger-bar {
-    background-color: #1B2A1E;
-}
-
-/* Theme Toggle */
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-#theme-toggle-button {
-    display: none;
-}
-
-.toggle-label {
-    display: flex;
-    align-items: center;
-    background-color: #d9b99b;
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    justify-content: space-around;
-    position: relative;
-    transition: background-color 0.3s ease;
-}
-
-/* Ball inside the toggle */
-.toggle-ball {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background-color: #1B2A1E;
+.about-me-portrait img {
+    max-width: 200px;
+    /* Increase the size of the image */
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2em 0;
+    /* Add more space around the image */
 }
 
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translateX(30px);
+.spotify-embed {
+    margin-top: 2em;
+    /* Move the Spotify embed further down */
 }
-
-/* Sun and Moon Icons */
-.sun-icon,
-.moon-icon {
-    font-size: 16px;
-    color: #d9b99b;
-    z-index: 0;
-}
-
-.sun-icon {
-    margin-right: auto;
-    padding-left: 5px;
-}
-
-.moon-icon {
-    margin-left: auto;
-    padding-right: 5px;
-}
-
-/* Light and Dark Mode adjustments */
-body.light-mode header {
-    background-color: #f5e7dc;
-    color: #1B2A1E;
-}
-
-body.dark-mode header {
-    background-color: #1B2A1E;
-    color: #e7dec8;
-}
-/* Header Styles */
-header {
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    background-color: #1B2A1E;
-    color: #e7dec8;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: relative;
-    z-index: 101;
-}
-
-/* Centering the theme toggle */
-.theme-toggle-container {
-    flex: 1;
-    display: flex;
-    justify-content: center; /* Centering the toggle */
-}
-
-/* Burger Menu */
-.burger-menu {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    margin-left: auto; /* Aligns the burger menu to the right */
-}
-
-/* Toggle Label */
-.toggle-label {
-    display: flex;
-    align-items: center;
-    background-color: #d9b99b;
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    justify-content: space-between; /* Space for sun and moon icons */
-    position: relative;
-    transition: background-color 0.3s ease;
-}
-
-/* Toggle Ball */
-.toggle-ball {
-    position: absolute;
-    top: 3px; /* Center the ball vertically */
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background-color: #1B2A1E; /* Color for dark mode */
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-/* Toggle Button Colors */
-body.light-mode .toggle-label {
-    background-color: #1B2A1E; /* Dark mode background color */
-}
-
-body.light-mode .toggle-ball {
-    background-color: #d9b99b; /* Color for light mode */
-}
-
-#theme-toggle-button:checked + .toggle-label .toggle-ball {
-    transform: translateX(30px); /* Toggle movement */
-}
-
-body.light-mode .sun-icon {
-    color: #d9b99b; /* Light color for sun icon */
-}
-
-body.dark-mode .moon-icon {
-    color: #F9A826; /* Yellow color for moon icon in dark mode */
-}
-
-/* Additional styles may be added as needed */
-/* Toggle Label */
-.toggle-label {
-    display: flex;
-    align-items: center;
-    background-color: #d9b99b;
-    /* Light mode background color */
-    width: 60px;
-    height: 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    justify-content: space-between;
-    /* Space for sun and moon icons */
-    position: relative;
-    transition: background-color 0.3s ease;
-    padding: 0 5px;
-    /* Adjust padding for balance */
-}
-
-/* Toggle Ball */
-.toggle-ball {
-    position: absolute;
-    top: 50%;
-    /* Center vertically */
-    left: 3px;
-    /* Adjust left for ball position */
-    transform: translateY(-50%);
-    /* Center the ball vertically */
-    width: 24px;
-    height: 24px;
-    background-color: #1B2A1E;
-    /* Color for dark mode */
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-/* Adjust for checked state */
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translate(30px, -50%);
-    /* Move ball and keep it centered */
-}
-
-/* Sun and Moon Icons */
-.sun-icon,
-.moon-icon {
-    font-size: 16px;
-    color: #d9b99b;
-    z-index: 0;
-}
-
-/* Update font for the About Me section */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
 
 .about-me-section {
     display: flex;
@@ -714,145 +356,86 @@ body.dark-mode .moon-icon {
     align-items: center;
     text-align: center;
     padding: 2em;
-    font-family: 'Playfair Display', serif;
-    background-color: #FDF6EC;
-    color: #8B572A;
-}
-
-.about-me-content {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.about-me-text h2 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-.about-me-text p {
-    font-size: 1.2em;
-    color: #8B572A;
-    margin-bottom: 1.5em;
-}
-
-.spotify-embed iframe {
     width: 100%;
-    max-width: 500px;
-    border: none;
-    border-radius: 12px;
-    margin-top: 1.5em;
-}
-
-.about-me-portrait {
-    margin: 1.5em 0;
-}
-
-.about-me-portrait img {
-    max-width: 150px;
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.about-me-description {
-    font-size: 1.2em;
-    color: #8B572A;
-    max-width: 600px;
-    margin: 1em auto;
-    line-height: 1.6;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Ensure "About Me" heading is distinct */
-.about-me-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    color: #8B572A;
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-/* Make the rest of the text consistent */
-.about-me-section p {
-    font-family: 'Roboto', sans-serif;
-    /* Apply consistent font */
-    font-size: 1.2em;
-    color: #8B572A;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 1.5em;
-    line-height: 1.6;
-}
-/* Light Mode */
-body.light-mode .about-me-section {
+    min-height: 100vh;
     background-color: #FDF6EC;
-    /* Light background */
+    /* Light background for light mode */
     color: #2E4B32;
-    /* Dark green text */
+    /* Dark green text color for light mode */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-body.light-mode .about-me-section h2 {
-    color: #2E4B32;
-    /* Dark green text for heading */
-}
-
-/* Dark Mode */
+/* Dark Mode - About Me Section */
 body.dark-mode .about-me-section {
     background-color: #2E4B32;
-    /* Dark green background */
+    /* Dark green background for dark mode */
     color: #FDF6EC;
-    /* Light text */
+    /* Light text color for dark mode */
+}
+.hero-content h1 {
+    font-size: 6rem;
+    /* Adjust to match the desired size */
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+}/* Burger Menu Bars */
+.burger-bar {
+    width: 25px;
+    height: 3px;
+    background-color: #e7dec8;
+    /* Default color */
+    margin: 4px 0;
+    transition: background-color 0.3s ease;
 }
 
-body.dark-mode .about-me-section h2 {
-    color: #FDF6EC;
-    /* Light text for heading */
+body.light-mode .burger-bar {
+    background-color: #1B2A1E;
 }
-/* Enlarge the portrait image */
-.about-me-portrait img {
-    max-width: 250px;
-    /* Increase this to make the image larger */
-    border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.subheading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-style: italic;
 }
-
-/* Change text color to dark green in light mode */
-body.light-mode .about-me-section {
-    background-color: #FDF6EC;
-    /* Light background */
-    color: #2E4B32;
-    /* Dark green text */
+/* Ensures each line can be styled separately */
+.main-name {
+    text-align: center;
 }
 
-body.light-mode .about-me-section h2,
-body.light-mode .about-me-section p {
-    color: #2E4B32;
-    /* Dark green text for all headings and paragraphs */
-}
-/* Light Mode */
-body.light-mode .about-me-section {
-    background-color: #FDF6EC !important;
-    /* Light background */
-    color: #2E4B32 !important;
-    /* Dark green text */
+.first-line {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: -40px;
 }
 
-body.light-mode .about-me-section h2,
-body.light-mode .about-me-section p {
-    color: #2E4B32 !important;
-    /* Dark green text for heading and paragraphs */
+.second-line {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: -80px;
+}
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #1B2A1E;
+    /* Dark green border */
+    border-radius: 20px;
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px;
 }
 
-/* Dark Mode */
-body.dark-mode .about-me-section {
-    background-color: #2E4B32 !important;
-    /* Dark green background */
-    color: #FDF6EC !important;
-    /* Light text */
-}
-
-body.dark-mode .about-me-section h2,
-body.dark-mode .about-me-section p {
-    color: #FDF6EC !important;
-    /* Light text for heading and paragraphs */
+.btn:hover {
+    background-color: #1B2A1E;
+    /* Dark green background on hover */
+    color: #f5e7dc;
+    /* Light text color on hover */
 }

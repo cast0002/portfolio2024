@@ -138,12 +138,10 @@ body.light-mode .toggle-label {
 }
 
 body.light-mode .toggle-ball {
-    background-color: #d9b99b;
-    /* Light color for toggle ball */
+    background-color: #e7dec8;
 }
 
 body.light-mode .sun-icon,
 body.light-mode .moon-icon {
-    color: #d9b99b;
-    /* Light color for icons */
+    color: #e7dec8;
 }
