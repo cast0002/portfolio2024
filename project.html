@@ -208,6 +208,64 @@
                 max-width: 100%;
             }
         }
+
+        body.menu-open {
+            overflow: hidden;
+            /* Prevents scrolling when menu is open */
+        }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: #f5e7dc;
+            color: #1B2A1E;
+        }
+
+        body.light-mode header {
+            background-color: #f5e7dc;
+            color: #1B2A1E;
+        }
+
+        body.light-mode .menu-overlay {
+            background-color: rgba(245, 231, 220, 0.9);
+        }
+
+        body.light-mode .menu-overlay nav ul li a,
+        body.light-mode .burger-bar {
+            color: #1B2A1E;
+        }
+
+        body.light-mode .toggle-label {
+            background-color: #1B2A1E;
+        }
+
+        body.light-mode .toggle-ball {
+            background-color: #e7dec8;
+        }
+
+        body.light-mode .sun-icon,
+        body.light-mode .moon-icon {
+            color: #e7dec8;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1B2A1E;
+            color: #e7dec8;
+        }
+
+        body.dark-mode header {
+            background-color: #1B2A1E;
+            color: #e7dec8;
+        }
+
+        body.dark-mode .menu-overlay {
+            background-color: rgba(13, 13, 13, 0.9);
+        }
+
+        body.dark-mode .sun-icon,
+        body.dark-mode .moon-icon {
+            color: #1B2A1E;
+        }
     </style>
 </head>
 
@@ -317,6 +375,7 @@
                     localStorage.setItem("theme", themeToggleButton.checked ? "light-mode" : "dark-mode");
                 });
             });
+
     </script>
 </body>
 
