@@ -481,3 +481,24 @@ body.light-mode .btn {
     transition: background-color 0.3s ease, color 0.3s ease;
     margin-top: 15px;
 }
+/* Burger Menu Overlay */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 42, 30, 0.9);
+    /* Dark green with slight opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.open {
+    display: flex;
+    opacity: 1;
+}
