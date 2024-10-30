@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Carmen-Sophia Hemme</title>
+    <style>
+        /* Reset body and html margins and padding */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style for navigation */
+        #nav-placeholder {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Style the iframe to take up the full screen except for the navigation */
+        iframe {
+            width: 100%;
+            height: calc(100vh - 60px);
+            /* Adjust height based on nav height */
+            border: none;
+            margin-top: 60px;
+            /* Adjust margin based on nav height */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Placeholder for navigation menu -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Embed the PDF to fill the entire screen below the navigation -->
+    <iframe src="Portfolio (4).pdf" title="Carmen-Sophia Hemme Portfolio"></iframe>
+
+    <script>
+        // Load nav.html content into #nav-placeholder
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation menu:', error));
+    </script>
+</body>
+
+</html>

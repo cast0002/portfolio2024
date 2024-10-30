@@ -1,178 +1,99 @@
 /* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-h1,
-h2,
-h3,
-p {
-    font-family: 'Playfair Display', serif;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
 }
 
 header,
 footer {
-    background-color: transparent;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Logo */
-.logo {
-    font-size: 24px;
-    color: inherit;
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
 }
 
-/* Rolling Text Effect */
-.rolling-text {
-    display: inline-block;
-    font-size: 18px;
-    line-height: 36px;
-    height: 36px;
-    overflow: hidden;
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
-.rolling-text:hover .link-container {
-    transform: translateY(-100%);
+.project {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
 }
 
-.link-container {
-    display: flex;
-    transition: transform 0.4s ease;
+a {
+    color: #1B2A1E;
+    text-decoration: none;
 }
 
-.title {
-    display: block;
-    font-size: 18px;
-    line-height: 36px;
-    font-weight: bold;
+a:hover {
+    text-decoration: underline;
 }
 
-/* Theme Toggle Switch */
+/* Light and Dark Mode Styles */
+body.light-mode {
+    background-color: #FDF6EC;
+    color: #2E4B32;
+}
+
+body.dark-mode {
+    background-color: #1B2A1E;
+    color: #FDF6EC;
+}
+
+/* Toggle Switch Styles */
 .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 30px;
+    height: 34px;
 }
 
-#theme-toggle-button {
-    display: none;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-.toggle-label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    background-color: #444;
-    border-radius: 30px;
-    cursor: pointer;
-    padding: 0 5px;
-    transition: background-color 0.3s ease;
-}
-
-.toggle-ball {
+.slider {
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background-color: #d9b99b;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
     border-radius: 50%;
-    transition: transform 0.3s ease;
 }
 
-#theme-toggle-button:checked+.toggle-label .toggle-ball {
-    transform: translateX(30px);
+input:checked+.slider {
+    background-color: #1B2A1E;
 }
 
-/* Light Mode (default) */
-body {
-    background-color: #fef5e7;
-    color: #8b5e34;
-}
-
-header,
-footer {
-    background-color: #fef5e7;
-    color: #8b5e34;
-}
-
-.nav-links a {
-    color: #8b5e34;
-    text-decoration: none;
-}
-
-#hero {
-    background-color: #fef5e7;
-    color: #8b5e34;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.btn {
-    background-color: #d79d64;
-    color: #8b5e34;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.card {
-    background-color: #fef5e7;
-    color: #8b5e34;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background-color: #121212;
-    color: #e7dec8;
-}
-
-body.dark-mode header,
-body.dark-mode footer {
-    background-color: #121212;
-    color: #e7dec8;
-}
-
-body.dark-mode .nav-links a,
-body.dark-mode .logo {
-    color: #e7dec8;
-}
-
-body.dark-mode #hero {
-    background-color: #121212;
-    color: #e7dec8;
-}
-
-body.dark-mode .btn {
-    background-color: #3b3b3b;
-    color: #e7dec8;
-}
-
-body.dark-mode .card {
-    background-color: #1c1c1c;
-    color: #e7dec8;
-}
-
-body.dark-mode .toggle-label {
-    background-color: #3b3b3b;
-}
-
-body.dark-mode .toggle-ball {
-    background-color: #e7dec8;
+input:checked+.slider:before {
+    transform: translateX(26px);
 }
