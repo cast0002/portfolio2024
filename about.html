@@ -7,24 +7,31 @@
     <title>About - CSHS</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* General Styles */
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
-            color: #d9b99b;
             background-color: #1B2A1E;
+            color: #e7dec8;
+            padding: 20px;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        body.light-mode {
-            background-color: #d9b99b;
+        .light-mode {
+            background-color: #f5e7dc;
             color: #1B2A1E;
         }
 
         h1,
         .section-heading {
             font-family: 'Playfair Display', serif;
-            color: inherit;
             text-align: center;
         }
 
@@ -87,100 +94,48 @@
         .education-details h3 {
             font-size: 1.2rem;
             font-weight: bold;
-            color: inherit;
         }
 
         .education-details p {
             font-size: 1rem;
-            color: inherit;
         }
 
-        body.light-mode .toggle-label {
-            background-color: #1B2A1E;
-        }
-
-        body.light-mode .toggle-ball {
-            background-color: #e7dec8;
-        }
-
-        body.light-mode .sun-icon,
-        body.light-mode .moon-icon {
-            color: #e7dec8;
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: #1B2A1E;
-            color: #e7dec8;
-        }
-
-        body.dark-mode header {
-            background-color: #1B2A1E;
-            color: #e7dec8;
-        }
-
-        body.dark-mode .sun-icon,
-        body.dark-mode .moon-icon {
-            color: #1B2A1E;
-        }
-
-        /* Add this to increase spacing below the education section */
-        .education-section {
-            margin-bottom: 30px;
-            /* Adjust this value as needed for desired spacing */
-            padding: 20px;
-            background-color: rgba(217, 185, 155, 0.1);
-            border: 1px solid currentColor;
-            border-radius: 10px;
-        }
-
-        .about-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .text-container {
-            text-align: center;
-        }
-
-        /* Add spacing below the About Me heading */
-        .text-container h1 {
-            font-family: 'Playfair Display', serif;
-            color: inherit;
-            margin-bottom: 20px;
-            /* Adjust for desired spacing */
-        }
-
-        /* Add spacing below the paragraph text */
-        .text-container p {
-            margin-bottom: 30px;
-            /* Adjust for desired spacing */
-        }
-
-        .portrait {
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        body.menu-open {
+            overflow: hidden;
         }
     </style>
-
 </head>
 
 <body>
-    <!-- Placeholder for navigation menu -->
-    <div id="nav-placeholder"></div>
+    <header>
+        <div class="logo">CSHS</div>
+
+        <div class="theme-toggle-container">
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-toggle-button">
+                <label for="theme-toggle-button" class="toggle-label">
+                    <span class="toggle-ball"></span>
+                    <span class="sun-icon">𖤓</span>
+                    <span class="moon-icon">☾</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="burger-menu" id="burger-menu">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+        </div>
+    </header>
 
     <section id="about-me">
         <div class="about-container">
             <div class="text-container">
                 <h1>About Me</h1>
                 <p>My name is Carmen-Sophia, and I am a Multimedia Design student at KEA (Copenhagen School of Design
-                    and Technology) from
-                    Denmark. With a specialization in UX and UI design, I am deeply passionate about creating digital
-                    solutions that are
-                    both aesthetically pleasing, sustainable, and highly functional.</p>
+                    and Technology) from Denmark. With a specialization in UX and UI design, I am deeply passionate
+                    about creating digital solutions that are both aesthetically pleasing, sustainable, and highly
+                    functional.</p>
             </div>
             <div class="image-container">
                 <img src="carmen.png" alt="Portrait of Carmen-Sophia Hemme" class="portrait">
@@ -208,28 +163,46 @@
         </section>
 
         <p>As a Multimedia Design student at KEA in Copenhagen, I have developed a comprehensive understanding of UX and
-            UI design
-            principles. My coursework has covered a wide range of topics, including web development, graphic design, and
-            digital
-            communication. I have gained hands-on experience with industry-standard tools such as Adobe Creative Suite,
-            Figma, and
-            various coding languages.</p>
+            UI design principles. My coursework has covered a wide range of topics, including web development, graphic
+            design, and digital communication. I have gained hands-on experience with industry-standard tools such as
+            Adobe Creative Suite, Figma, and various coding languages.</p>
     </section>
 
     <script>
-        // Fetch and insert nav.html for navigation
-        fetch('nav.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('nav-placeholder').innerHTML = data;
-                document.getElementById('theme-toggle-button').addEventListener('change', toggleTheme);
-            });
+        // Theme toggle for dark/light mode
+        document.getElementById("theme-toggle-button").addEventListener("change", function () {
+            document.body.classList.toggle("light-mode", this.checked);
+            document.body.classList.toggle("dark-mode", !this.checked);
+            localStorage.setItem("theme", this.checked ? "light-mode" : "dark-mode");
+        });
 
-        // Toggle theme based on switch state
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            document.body.classList.toggle('dark-mode');
+        // Apply saved theme on page load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light-mode') {
+            document.body.classList.add('light-mode');
+            document.getElementById("theme-toggle-button").checked = true;
+        } else {
+            document.body.classList.add('dark-mode');
         }
+
+        // Burger menu toggle
+        const burgerMenu = document.getElementById("burger-menu");
+        const menuOverlay = document.getElementById("menu-overlay");
+
+        burgerMenu.addEventListener("click", function () {
+            menuOverlay.classList.toggle("open");
+            burgerMenu.classList.toggle("active");
+            document.body.classList.toggle("menu-open"); // Prevents scrolling when menu is open
+        });
+
+        // Close the menu overlay when a link is clicked
+        document.querySelectorAll(".menu-overlay nav ul li a").forEach(link => {
+            link.addEventListener("click", () => {
+                menuOverlay.classList.remove("open");
+                burgerMenu.classList.remove("active");
+                document.body.classList.remove("menu-open");
+            });
+        });
     </script>
 </body>
 
