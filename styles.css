@@ -439,3 +439,45 @@ body.light-mode .burger-bar {
     color: #f5e7dc;
     /* Light text color on hover */
 }
+/* Default Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #e7dec8;
+    /* Light border for dark mode */
+    border-radius: 20px;
+    color: #e7dec8;
+    /* Light text color in dark mode */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px;
+}
+
+/* Dark Mode Hover Effect */
+body.dark-mode .btn:hover {
+    background-color: #e7dec8;
+    /* Light background on hover */
+    color: #1B2A1E;
+    /* Dark text color on hover */
+}
+body.light-mode .btn:hover {
+    background-color: #1B2A1E;
+    /* Light background on hover */
+    color: #e7dec8;
+    /* Dark text color on hover */
+}
+body.light-mode .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #1B2A1E;
+    /* Dark green border */
+    border-radius: 20px;
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px;
+}
