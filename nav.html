@@ -29,7 +29,6 @@
 
         body.menu-open {
             overflow: hidden;
-            /* Prevents scrolling when menu is open */
         }
 
         /* Header Styles */
@@ -170,10 +169,6 @@
             transition: color 0.3s ease;
         }
 
-        .menu-overlay nav ul li a:hover {
-            color: #e7dec8;
-        }
-
         body.light-mode .menu-overlay {
             background-color: rgba(245, 231, 220, 0.9);
         }
@@ -182,25 +177,17 @@
             color: #1B2A1E;
         }
 
-        /* General logo color, to match the navigation text */
+        /* Logo color */
         .logo {
             color: #e7dec8;
-            /* Default color for dark mode */
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
             text-decoration: none;
         }
 
-        /* Adjust logo color in light mode */
         body.light-mode .logo {
             color: #1B2A1E;
-            /* Dark green color for light mode */
-        }
-
-        /* Optional: if your nav links have a hover effect, you can add it here */
-        .logo:hover {
-            opacity: 0.8;
         }
     </style>
 </head>
@@ -235,9 +222,17 @@
 
     <script>
         // Theme toggle for dark/light mode
-        document.getElementById("theme-toggle-button").addEventListener("change", function () {
-            document.body.classList.toggle("light-mode", this.checked);
-            document.body.classList.toggle("dark-mode", !this.checked);
+        const themeToggleButton = document.getElementById("theme-toggle-button");
+
+        // Load theme on page load
+        document.body.classList.add(localStorage.getItem("theme") || "dark-mode");
+        themeToggleButton.checked = localStorage.getItem("theme") === "light-mode";
+
+        themeToggleButton.addEventListener("change", function () {
+            const isLightMode = this.checked;
+            document.body.classList.toggle("light-mode", isLightMode);
+            document.body.classList.toggle("dark-mode", !isLightMode);
+            localStorage.setItem("theme", isLightMode ? "light-mode" : "dark-mode");
         });
 
         // Burger menu toggle
@@ -247,10 +242,10 @@
         burgerMenu.addEventListener("click", function () {
             menuOverlay.classList.toggle("open");
             burgerMenu.classList.toggle("active");
-            document.body.classList.toggle("menu-open"); // Prevents scrolling when menu is open
+            document.body.classList.toggle("menu-open");
         });
 
-        // Close the menu overlay when a link is clicked
+        // Close menu overlay when a link is clicked
         document.querySelectorAll(".menu-overlay nav ul li a").forEach(link => {
             link.addEventListener("click", () => {
                 menuOverlay.classList.remove("open");
